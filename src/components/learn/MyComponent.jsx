@@ -4,9 +4,5 @@ const MyComponent = () => {
   )
 }
 
-const FakeComponent = () => {
-  return (
-    <div>This is my show, my ground</div>
-  )
-}
+
 export default MyComponent
