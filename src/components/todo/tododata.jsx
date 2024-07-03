@@ -11,6 +11,7 @@ const TodoData = (props) => {
     // const age = props.age
     // const data = props.data
 
+
     console.log(">>>props: ", props)
     return (
         <div className="title-below">
