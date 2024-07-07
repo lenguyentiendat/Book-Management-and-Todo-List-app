@@ -38,7 +38,7 @@ const App = () => {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
-  const rndInt = randomIntFromInterval(1, 100000000000000);
+  const rndInt = randomIntFromInterval(1, 1000000);
 
 
   return (

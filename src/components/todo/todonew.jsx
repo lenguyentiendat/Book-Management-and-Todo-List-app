@@ -12,6 +12,7 @@ const TodoNew = (props) => {
     // addNewTodoFunc("Cobra")
     const handleClick = () => {
         addNewTodoFunc(valueInput)
+        setValueInput("")
         console.log(">>> check value input:", valueInput)
     }
     const handleOnChange = (name) => {
@@ -22,7 +23,9 @@ const TodoNew = (props) => {
         <div className="input-container">
             <input type="text"
                 onChange={(event) => handleOnChange(event.target.value)}
-                placeholder="Enter your task" />
+                placeholder="Enter your task"
+                value={valueInput}
+            />
             <button
                 style={{ cursor: "pointer" }}
                 onClick={handleClick}
