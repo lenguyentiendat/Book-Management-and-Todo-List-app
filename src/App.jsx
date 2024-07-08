@@ -18,7 +18,11 @@ const App = () => {
   //   address: "HCM city",
   //   country: "Vietnam"
   // }
-
+  const handleDeleteClick = (id) => {
+    const removeItem = todoList.filter(todo => todo.id !== id)
+    setTodoList(removeItem)
+    console.log(">>>Check id: ", id)
+  }
   const addNewTodo = (name) => {
     const newTodo = {
       id: rndInt,
@@ -51,6 +55,7 @@ const App = () => {
       {todoList.length > 0 ?
         < TodoData
           todoList={todoList}
+          handleDeleteClick={handleDeleteClick}
         />
         :
         <div className="todo-img">
