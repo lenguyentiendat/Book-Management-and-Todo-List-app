@@ -63,20 +63,7 @@ const App = () => {
         </div>
       }
 
-      {/* {todoList.length > 0 &&
-          <TodoData
-            // name={datLNT}
-            // age={age}
-            // data={data}
-            todoList={todoList}
-          />    
-      }
 
-      {todoList.length === 0 &&
-        <div className="todo-img">
-          <img src={reactLogo} className="logo" alt="React logo" />
-        </div>
-      } */}
 
     </div>
   )
