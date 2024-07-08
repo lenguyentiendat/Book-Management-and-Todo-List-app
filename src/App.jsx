@@ -47,16 +47,32 @@ const App = () => {
       <TodoNew
         addNewTodoFunc={addNewTodo}
       />
-      <TodoData
-        // name={datLNT}
-        // age={age}
-        // data={data}
-        todoList={todoList}
 
-      />
-      <div className="todo-img">
-        <img src={reactLogo} className="logo" alt="React logo" />
-      </div>
+      {todoList.length > 0 ?
+        < TodoData
+          todoList={todoList}
+        />
+        :
+        <div className="todo-img">
+          <img src={reactLogo} className="logo" alt="React logo" />
+        </div>
+      }
+
+      {/* {todoList.length > 0 &&
+          <TodoData
+            // name={datLNT}
+            // age={age}
+            // data={data}
+            todoList={todoList}
+          />    
+      }
+
+      {todoList.length === 0 &&
+        <div className="todo-img">
+          <img src={reactLogo} className="logo" alt="React logo" />
+        </div>
+      } */}
+
     </div>
   )
 }
