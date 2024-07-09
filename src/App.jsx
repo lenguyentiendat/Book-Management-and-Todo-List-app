@@ -1,4 +1,3 @@
-
 import "./components/todo/todo.css"
 import TodoData from "./components/todo/tododata"
 import TodoNew from "./components/todo/todonew"
@@ -62,8 +61,6 @@ const App = () => {
           <img src={reactLogo} className="logo" alt="React logo" />
         </div>
       }
-
-
 
     </div>
   )
