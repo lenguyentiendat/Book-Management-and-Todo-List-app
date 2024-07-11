@@ -14,7 +14,7 @@ const TodoData = (props) => {
 
     const handleClick = (id) => {
         handleDeleteClick(id)
-        alert(id)
+        // alert(id)
     }
     console.log(">>>props: ", props.todoList)
     return (
