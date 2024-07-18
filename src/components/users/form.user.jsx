@@ -4,7 +4,9 @@ import { useState } from 'react';
 import { createUserApi } from '../../service/api.service';
 
 
-const FormUser = () => {
+const FormUser = (props) => {
+    console.log(">>>check props", props)
+    const { loadUser } = props
     const [fullName, setFullName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -15,16 +17,24 @@ const FormUser = () => {
 
     const handleSubmitBtn = async () => {
         const res = await createUserApi(fullName, email, password, phoneNumber)
-        console.log(">>>check res", res)
+        // console.log(">>>check res", res)
         if (res.data) {
             notification.success({
                 message: "Create users",
                 description: "Create users successfully"
             })
-            setIsModalOpen(false)
+            resetAndCloseModal()
+            await loadUser()
         }
     }
+    const resetAndCloseModal = () => {
+        setIsModalOpen(false)
+        setFullName("")
+        setEmail("")
+        setPassword("")
+        setPhoneNumber("")
 
+    }
 
     // console.log(">>>check informations", fullName, email, password, phoneNumber)
 
@@ -43,7 +53,7 @@ const FormUser = () => {
                 title="Create Users"
                 open={isModalOpen}
                 onOk={() => handleSubmitBtn()}
-                onCancel={() => setIsModalOpen(false)}
+                onCancel={() => resetAndCloseModal()}
                 maskClosable={false}
                 okText={"Create"}
             >

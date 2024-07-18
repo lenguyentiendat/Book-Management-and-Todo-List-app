@@ -1,15 +1,8 @@
 import { Space, Table, Tag } from 'antd';
 import { fetchAllUserAPI } from '../../service/api.service';
 import { useEffect, useState } from 'react';
-const TableUsers = () => {
-    const [dataUsers, setDataUsers] = useState([])
-
-
-    //Ko nen dung async await trog useEffect
-    useEffect(() => {
-        console.log(">>> run useEffect 11111")
-        loadUser()
-    }, [])
+const TableUsers = (props) => {
+    const { dataUsers } = props
 
 
     const columns = [
@@ -53,12 +46,6 @@ const TableUsers = () => {
     //         tags: ['cool', 'teacher'],
     //     },
     // ];
-
-
-    const loadUser = async () => {
-        const res = await fetchAllUserAPI()
-        setDataUsers(res.data)
-    }
 
     console.log(">>run render  0000")
     return (
