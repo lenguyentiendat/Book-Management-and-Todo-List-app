@@ -3,6 +3,7 @@ import { fetchAllUserAPI } from '../../service/api.service';
 import { useEffect, useState } from 'react';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import UpdateUser from './update.user';
+import ViewUserDetail from './view.user.detail';
 
 const TableUsers = (props) => {
     const { dataUsers, loadUser } = props
@@ -11,6 +12,9 @@ const TableUsers = (props) => {
 
     const [dataUpdate, setDataUpdate] = useState(null)
 
+    const [dataDetails, setDataDetails] = useState(null)
+    const [isDataDetailsOpen, setIsDataDetailsOpen] = useState(false)
+
 
     const columns = [
         {
@@ -18,7 +22,13 @@ const TableUsers = (props) => {
             dataIndex: '_id',
             render: (_, record) => {
                 return (
-                    <a href='#'>{record._id}</a>
+                    <a
+                        onClick={() => {
+                            setDataDetails(record)
+                            setIsDataDetailsOpen(true)
+                        }
+                        }>{record._id}
+                    </a>
                 )
             }
         },
@@ -88,6 +98,12 @@ const TableUsers = (props) => {
                 dataUpdate={dataUpdate}
                 setDataUpdate={setDataUpdate}
                 loadUser={loadUser}
+            />
+            <ViewUserDetail
+                dataDetails={dataDetails}
+                setDataDetails={setDataDetails}
+                isDataDetailsOpen={isDataDetailsOpen}
+                setIsDataDetailsOpen={setIsDataDetailsOpen}
             />
         </>
 
