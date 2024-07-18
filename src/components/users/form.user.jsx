@@ -7,6 +7,7 @@ import { createUserApi } from '../../service/api.service';
 const FormUser = (props) => {
     console.log(">>>check props", props)
     const { loadUser } = props
+
     const [fullName, setFullName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")

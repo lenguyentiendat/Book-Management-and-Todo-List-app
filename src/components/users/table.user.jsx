@@ -1,14 +1,26 @@
 import { Space, Table, Tag } from 'antd';
 import { fetchAllUserAPI } from '../../service/api.service';
 import { useEffect, useState } from 'react';
+import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import UpdateUser from './update.user';
+
 const TableUsers = (props) => {
-    const { dataUsers } = props
+    const { dataUsers, loadUser } = props
+
+    const [isModalUpdateOpen, setIsModalUpdateOpen] = useState(false)
+
+    const [dataUpdate, setDataUpdate] = useState(null)
 
 
     const columns = [
         {
             title: 'ID',
             dataIndex: '_id',
+            render: (_, record) => {
+                return (
+                    <a href='#'>{record._id}</a>
+                )
+            }
         },
         {
             title: 'Full Name',
@@ -21,6 +33,22 @@ const TableUsers = (props) => {
         {
             title: 'Phone Number',
             dataIndex: 'phone',
+        },
+        {
+            title: 'Action',
+            key: 'action',
+            render: (_, record) => (
+                <div style={{ display: "flex", gap: "20px" }}>
+                    <EditOutlined
+                        onClick={() => {
+                            // 
+                            setDataUpdate(record)
+                            setIsModalUpdateOpen(true)
+                        }}
+                        style={{ cursor: "pointer", color: "blue" }} />
+                    <DeleteOutlined style={{ cursor: "pointer", color: "red" }} />
+                </div>
+            ),
         },
     ];
 
@@ -47,13 +75,22 @@ const TableUsers = (props) => {
     //     },
     // ];
 
-    console.log(">>run render  0000")
     return (
-        <Table
-            columns={columns}
-            dataSource={dataUsers}
-            rowKey={"_id"}
-        />
+        <>
+            <Table
+                columns={columns}
+                dataSource={dataUsers}
+                rowKey={"_id"}
+            />
+            <UpdateUser
+                isModalUpdateOpen={isModalUpdateOpen}
+                setIsModalUpdateOpen={setIsModalUpdateOpen}
+                dataUpdate={dataUpdate}
+                setDataUpdate={setDataUpdate}
+                loadUser={loadUser}
+            />
+        </>
+
     )
 }
 export default TableUsers;  
