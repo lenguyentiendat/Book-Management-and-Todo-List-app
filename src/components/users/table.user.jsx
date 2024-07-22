@@ -1,6 +1,5 @@
-import { Space, Table, Tag, Popconfirm, notification } from 'antd';
-import { fetchAllUserAPI } from '../../service/api.service';
-import { useEffect, useState } from 'react';
+import { Table, Popconfirm, notification } from 'antd';
+import { useState } from 'react';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import UpdateUser from './update.user';
 import { deleteUserApi } from '../../service/api.service';

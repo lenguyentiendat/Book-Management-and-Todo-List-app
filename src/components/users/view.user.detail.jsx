@@ -1,4 +1,4 @@
-import { Drawer } from "antd"
+import { Button, Drawer } from "antd"
 import { useState, useEffect } from "react"
 
 
@@ -27,6 +27,7 @@ const ViewUserDetail = (props) => {
 
     return (
         <Drawer
+            width={"40vw"}
             title="User Details"
             onClose={() => {
                 setIsDataDetailsOpen(false)
@@ -37,20 +38,46 @@ const ViewUserDetail = (props) => {
 
             {dataDetails ? <>
                 <div>
-                    <span>ID: {dataDetails._id}</span>
+                    <p>ID: {dataDetails._id}</p>
                 </div>
+                <br />
 
                 <div>
-                    <span>Full name: {dataDetails.fullName}</span>
+                    <p>Full name: {dataDetails.fullName}</p>
                 </div>
+                <br />
 
                 <div>
-                    <span>Phone Number: {dataDetails.phone}</span>
+                    <p>Phone Number: {dataDetails.phone}</p>
                 </div>
+                <br />
 
                 <div>
-                    <span>Email: {dataDetails.email}</span>
+                    <p>Email: {dataDetails.email}</p>
                 </div>
+                <br />
+                <p> Avatar: </p>
+                <div>
+                    <img height={100} width={150}
+                        src={`${import.meta.env.VITE_BACKEND_URL}/images/avatar/${dataDetails.avatar}`} />
+                </div>
+                <div>
+                    <label htmlFor="btnUpload" style={{
+                        display: "block",
+                        width: "fit-content",
+                        marginTop: "15px",
+                        padding: "10px",
+                        background: "orange",
+                        borderRadius: "5px",
+                        cursor: "pointer"
+                    }}>
+                        Upload Avatar
+                    </label>
+                    <input type="file" hidden id="btnUpload" />
+                </div>
+
+
+
             </>
                 :
                 <>
