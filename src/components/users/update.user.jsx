@@ -31,7 +31,7 @@ const UpdateUser = (props) => {
                 description: "Update users successfully"
             })
             resetAndCloseModal()
-            // await loadUser()
+            await loadUser()
         }
     }
     const resetAndCloseModal = () => {

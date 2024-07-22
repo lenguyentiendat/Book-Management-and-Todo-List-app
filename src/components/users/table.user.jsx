@@ -1,9 +1,11 @@
-import { Space, Table, Tag } from 'antd';
+import { Space, Table, Tag, Popconfirm, notification } from 'antd';
 import { fetchAllUserAPI } from '../../service/api.service';
 import { useEffect, useState } from 'react';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import UpdateUser from './update.user';
+import { deleteUserApi } from '../../service/api.service';
 import ViewUserDetail from './view.user.detail';
+
 
 const TableUsers = (props) => {
     const { dataUsers, loadUser } = props
@@ -14,6 +16,28 @@ const TableUsers = (props) => {
 
     const [dataDetails, setDataDetails] = useState(null)
     const [isDataDetailsOpen, setIsDataDetailsOpen] = useState(false)
+
+
+
+    const handleDeleteUser = async (id) => {
+        const res = await deleteUserApi(id)
+        if (res.data) {
+            notification.success({
+                message: "Delete User",
+                description: "Delete user successfully"
+            })
+            await loadUser()
+        } else {
+            notification.error({
+                message: "Delete User fail",
+                description: JSON.stringify(res.message)
+            })
+        }
+    }
+
+
+
+
 
 
     const columns = [
@@ -56,7 +80,18 @@ const TableUsers = (props) => {
                             setIsModalUpdateOpen(true)
                         }}
                         style={{ cursor: "pointer", color: "blue" }} />
-                    <DeleteOutlined style={{ cursor: "pointer", color: "red" }} />
+                    <Popconfirm
+                        title="Delete User"
+                        description="Are you sure to delete this task?"
+                        onConfirm={() => { handleDeleteUser(record._id) }}
+                        // onCancel={cancel}
+                        okText="Yes"
+                        cancelText="No"
+                        placement='left'
+                    >
+                        <DeleteOutlined style={{ cursor: "pointer", color: "red" }} />
+                    </Popconfirm>
+
                 </div>
             ),
         },

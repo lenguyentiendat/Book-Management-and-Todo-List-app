@@ -14,41 +14,51 @@ const ViewUserDetail = (props) => {
     const [phoneNumber, setPhoneNumber] = useState("")
     const [email, setEmail] = useState("")
 
-    useEffect(() => {
-        console.log(">>>check dataDetails props: ", dataDetails)
-        if (dataDetails) {
-            setFullName(dataDetails.fullName)
-            setId(dataDetails._id)
-            setEmail(dataDetails.email)
-            setPhoneNumber(dataDetails.phone)
-        }
-    }, [dataDetails])
+    // useEffect(() => {
+    //     console.log(">>>check dataDetails props: ", dataDetails)
+    //     if (dataDetails) {
+    //         setFullName(dataDetails.fullName)
+    //         setId(dataDetails._id)
+    //         setEmail(dataDetails.email)
+    //         setPhoneNumber(dataDetails.phone)
+    //     }
+    // }, [dataDetails])
+    console.log(">>>Check data details: ", dataDetails)
 
     return (
         <Drawer
             title="User Details"
-            onClose={() => { setIsDataDetailsOpen(false) }}
+            onClose={() => {
+                setIsDataDetailsOpen(false)
+                setDataDetails(null)
+            }}
             open={isDataDetailsOpen}
         >
-            <div style={{ display: "flex", gap: "15px", flexDirection: "column" }}>
+
+            {dataDetails ? <>
                 <div>
-                    <span>ID: {id}</span>
+                    <span>ID: {dataDetails._id}</span>
                 </div>
 
                 <div>
-                    <span>Full name: {fullName}</span>
+                    <span>Full name: {dataDetails.fullName}</span>
                 </div>
 
                 <div>
-                    <span>Phone Number: {phoneNumber}</span>
+                    <span>Phone Number: {dataDetails.phone}</span>
                 </div>
 
                 <div>
-                    <span>Email: {email}</span>
+                    <span>Email: {dataDetails.email}</span>
                 </div>
+            </>
+                :
+                <>
 
-            </div>
-        </Drawer>
+                    <p>No data</p>
+                </>
+            }
+        </Drawer >
     )
 }
 export default ViewUserDetail
