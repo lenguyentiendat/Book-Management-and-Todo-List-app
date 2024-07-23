@@ -5,7 +5,7 @@ import { createUserApi } from '../../service/api.service';
 
 
 const FormUser = (props) => {
-    console.log(">>>check props", props)
+    // console.log(">>>check props", props)
     const { loadUser } = props
 
     const [fullName, setFullName] = useState("")
