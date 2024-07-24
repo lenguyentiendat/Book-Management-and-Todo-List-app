@@ -47,8 +47,13 @@ const ViewUserDetail = (props) => {
                     message: "Update user avatar",
                     description: "Update user avatar successfully"
                 })
+            } else {
+                notification.error({
+                    message: "Upload failed",
+                    description: JSON.stringify(resUpdateAvatar.message)
+                })
             }
-            console.log(">>>check avatar", avatar)
+
         }
         else {
             notification.error({

@@ -41,6 +41,18 @@ const TableUsers = (props) => {
 
     const columns = [
         {
+            title: "Number",
+            dataIndex: "index",
+            render: (_, record, index) => {
+                console.log(">>>check index", index)
+                return (
+                    <>
+                        {index + 1}
+                    </>
+                )
+            }
+        },
+        {
             title: 'ID',
             dataIndex: '_id',
             render: (_, record) => {
