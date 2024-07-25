@@ -7,7 +7,10 @@ import ViewUserDetail from './view.user.detail';
 
 
 const TableUsers = (props) => {
-    const { dataUsers, loadUser } = props
+    const { dataUsers, loadUser,
+        current, pageSize, total,
+        setCurrent, setPageSize
+    } = props
 
     const [isModalUpdateOpen, setIsModalUpdateOpen] = useState(false)
 
@@ -45,9 +48,11 @@ const TableUsers = (props) => {
             dataIndex: "index",
             render: (_, record, index) => {
                 console.log(">>>check index", index)
+                // const number = (index + 1) + (current - 1) * pageSize
+                // console.log(">>>check number", number)
                 return (
                     <>
-                        {index + 1}
+                        {(index + 1) + (current - 1) * pageSize}
                     </>
                 )
             }
@@ -108,7 +113,25 @@ const TableUsers = (props) => {
         },
     ];
 
-    //     {
+    const onChange = (pagination, filters, sorter, extra) => {
+        //setCurrent, setPageSize
+        //neu thay doi trang: current
+        if (pagination && pagination.current) {
+            if (+pagination.current !== +current) {
+                setCurrent(+pagination.current)
+
+            }
+        }
+
+        //neu thay doi tong so phan tu: pageSize
+        if (pagination && pagination.pageSize) {
+            if (+pagination.pageSize !== +pageSize) {
+                setPageSize(+pagination.pageSize)
+
+            }
+        }
+        console.log('params: ', { pagination, filters, sorter, extra });
+    }
     //         key: '1',
     //         name: 'John Brown',
     //         age: 32,
@@ -137,6 +160,16 @@ const TableUsers = (props) => {
                 columns={columns}
                 dataSource={dataUsers}
                 rowKey={"_id"}
+                pagination={
+                    {
+                        current: current,
+                        pageSize: pageSize,
+                        showSizeChanger: true,
+                        total: total,
+                        showTotal: (total, range) => { return (<div> {range[0]}-{range[1]} on {total} rows</div>) }
+                    }
+                }
+                onChange={onChange}
             />
             <UpdateUser
                 isModalUpdateOpen={isModalUpdateOpen}
@@ -151,6 +184,7 @@ const TableUsers = (props) => {
                 isDataDetailsOpen={isDataDetailsOpen}
                 setIsDataDetailsOpen={setIsDataDetailsOpen}
                 loadUser={loadUser}
+
             />
         </>
 
