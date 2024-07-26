@@ -2,6 +2,7 @@ import { Input, Button, Flex, notification, Modal, Form } from 'antd';
 import { useState } from 'react';
 import { registerUserApi } from '../service/api.service';
 import { useNavigate } from "react-router-dom";
+import { Row, Col } from 'antd';
 
 const RegisterPage = () => {
     const [form] = Form.useForm()
@@ -34,12 +35,10 @@ const RegisterPage = () => {
             onFinish={onFinish}
             // onFinishFailed={onFinishFailed} 
             autoComplete="off"
+            style={{ margin: "30px" }}
         >
-            <div className='user-form' style={{ margin: "10px 20px" }}>
-                <div style={{
-                    margin: "50px"
-                }}>
-
+            <Row justify={"center"}>
+                <Col xs={24} md={8}>
                     <Form.Item
                         label="Full Name"
                         name="fullName"
@@ -52,7 +51,11 @@ const RegisterPage = () => {
                     >
                         <Input />
                     </Form.Item>
+                </Col>
+            </Row>
 
+            <Row justify={"center"}>
+                <Col xs={24} md={8}>
                     <Form.Item
                         label="Email"
                         name="email"
@@ -65,7 +68,11 @@ const RegisterPage = () => {
                     >
                         <Input />
                     </Form.Item>
+                </Col>
+            </Row>
 
+            <Row justify={"center"}>
+                <Col xs={24} md={8}>
                     <Form.Item
                         label="Password"
                         name="password"
@@ -78,7 +85,11 @@ const RegisterPage = () => {
                     >
                         <Input />
                     </Form.Item>
+                </Col>
+            </Row>
 
+            <Row justify={"center"}>
+                <Col xs={24} md={8}>
                     <Form.Item
                         label="Phone Number"
                         name="phone"
@@ -93,26 +104,31 @@ const RegisterPage = () => {
                         <Input />
                     </Form.Item>
 
-                    {/* <button type="submit">Register</button> */}
+                </Col>
+            </Row>
 
-                    <div>
-                        <Button onClick={() => form.submit()}
-                            type="primary">Register</Button>
 
-                        {/* <Button onClick={() => {
-                            form.setFieldsValue({
-                                email: "datlnt@gmail.com",
-                                phone: "038123231231",
-                                
-                                fullName: "DatLNT"
-                            })
 
-                            console.log(">>>Check form", form.getFieldsValue())
-                            // form.getFieldsValue()
-                        }}>Test</Button> */}
-                    </div>
+            { /* <button type="submit">Register</button> */}
+            <Row justify={"center"}>
+                <div>
+                    <Button onClick={() => form.submit()}
+                        type="primary">Register</Button>
+
+                    {/* <Button onClick={() => {
+                                        form.setFieldsValue({
+                                            email: "datlnt@gmail.com",
+                                            phone: "038123231231",
+
+                                            fullName: "DatLNT"
+                                        })
+
+                                        console.log(">>>Check form", form.getFieldsValue())
+                                        // form.getFieldsValue()
+                                    }}>Test</Button> */}
                 </div>
-            </div>
+            </Row>
+
         </Form >
     )
 }
