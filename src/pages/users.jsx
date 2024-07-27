@@ -3,6 +3,7 @@ import TableUsers from "../components/users/table.user"
 import { fetchAllUserAPI } from "../service/api.service"
 import { useEffect, useState } from "react"
 
+
 const UsersPage = () => {
 
     const [dataUsers, setDataUsers] = useState([])

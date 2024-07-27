@@ -1,15 +1,15 @@
 import { Input, Button, Flex, notification, Modal, Form } from 'antd';
 import { useState } from 'react';
 import { registerUserApi } from '../service/api.service';
-import { useNavigate } from "react-router-dom";
-import { Row, Col } from 'antd';
+import { useNavigate, Link } from "react-router-dom";
+import { Row, Col, Divider } from 'antd';
 
 const RegisterPage = () => {
     const [form] = Form.useForm()
     const navigate = useNavigate();
 
     const onFinish = async (values) => {
-        console.log(">>CHECK VALUES ", values)
+        // console.log(">>CHECK VALUES ", values)
         const res = await registerUserApi(values.fullName, values.email, values.password, values.phone)
 
         if (res.data) {
@@ -37,6 +37,7 @@ const RegisterPage = () => {
             autoComplete="off"
             style={{ margin: "30px" }}
         >
+            <h3 style={{ textAlign: "center" }}>Register an account</h3>
             <Row justify={"center"}>
                 <Col xs={24} md={8}>
                     <Form.Item
@@ -111,11 +112,12 @@ const RegisterPage = () => {
 
             { /* <button type="submit">Register</button> */}
             <Row justify={"center"}>
-                <div>
-                    <Button onClick={() => form.submit()}
-                        type="primary">Register</Button>
+                <Col xs={24} md={8}>
+                    <div>
+                        <Button onClick={() => form.submit()}
+                            type="primary">Register</Button>
 
-                    {/* <Button onClick={() => {
+                        {/* <Button onClick={() => {
                                         form.setFieldsValue({
                                             email: "datlnt@gmail.com",
                                             phone: "038123231231",
@@ -126,7 +128,10 @@ const RegisterPage = () => {
                                         console.log(">>>Check form", form.getFieldsValue())
                                         // form.getFieldsValue()
                                     }}>Test</Button> */}
-                </div>
+                    </div>
+                    <Divider />
+                    <div>Already have one ?</div><Link to="/login">Login here</Link>
+                </Col>
             </Row>
 
         </Form >
