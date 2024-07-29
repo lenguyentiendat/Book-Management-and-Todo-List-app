@@ -15,7 +15,9 @@ const LoginPage = () => {
     const onFinish = async (values) => {
         // console.log(">>CHECK VALUES ", values)
         setLoading(true)
+
         const res = await loginApi(values.email, values.password)
+        console.log(">>>Check res", res)
         if (res.data) {
             message.success("Login successfully")
             localStorage.setItem("access_token", res.data.access_token)
@@ -27,6 +29,7 @@ const LoginPage = () => {
                 description: JSON.stringify(res.message)
 
             })
+
         }
         setLoading(false)
     }
