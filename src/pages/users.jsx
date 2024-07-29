@@ -14,7 +14,7 @@ const UsersPage = () => {
     //Ko nen dung async await trog useEffect
     // not empty => next value != prev value
     useEffect(() => {
-        console.log(">>> run useEffect 11111")
+        // console.log(">>> run useEffect 11111")
         loadUser()
     }, [current, pageSize]) //[] + condition
 
@@ -28,7 +28,7 @@ const UsersPage = () => {
         }
 
     }
-    console.log(">>>check current: ", current, pageSize)
+    // console.log(">>>check current: ", current, pageSize)
 
     //Lift up state
     return (

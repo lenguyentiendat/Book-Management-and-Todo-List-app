@@ -19,7 +19,7 @@ const TodoApp = () => {
     const handleDeleteClick = (id) => {
         const removeItem = todoList.filter(todo => todo.id !== id)
         setTodoList(removeItem)
-        console.log(">>>Check id: ", id)
+        // console.log(">>>Check id: ", id)
     }
     const addNewTodo = (name) => {
         const newTodo = {

@@ -9,9 +9,9 @@ export default function ErrorPage() {
     return (
         <div >
             <Result
-                status="403"
+                status="404"
                 title="Oops!"
-                subTitle="Sorry, you are not authorized to access this page."
+                subTitle={error.statusText || error.message}
                 extra={<Button type="primary">
                     <Link to="/">
                         <span >Back to Homepage</span>
