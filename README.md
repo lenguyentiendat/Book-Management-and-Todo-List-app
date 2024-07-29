@@ -6,7 +6,7 @@ This project is a website including three main pages: the homepage used to set T
 # Author: Le Nguyen Tien Dat
 + Phone Number: +84 369674212
 + FB: https://www.facebook.com/ln.tiendat1210/
-+ Linkedln: Tiến Đạt | Linkedin
++ Linkedln: https://www.linkedin.com/in/ti%E1%BA%BFn%C4%91%E1%BA%A1t/
 + Gmail: tiendatle.working@gmail.com  
 + Address: Linh Trung, Thu Duc, Ho Chi Minh City
 
