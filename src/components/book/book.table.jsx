@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react"
-import { fetchAllBookApi } from "../../service/api.service"
+import { fetchAllBookApi, deleteBookApi } from "../../service/api.service"
 import { Table, Popconfirm, notification, Button } from 'antd';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import BookDetail from "./book.detail";
 import BookFormControl from "./book.form.control";
 import BookFormUncontrol from "./book.form.uncontrol";
 import BookUpdateControl from "./book.update.control";
+import BookUpdateUncontrol from "./book.update.uncontrol";
 
 const BookTable = () => {
 
@@ -37,7 +38,19 @@ const BookTable = () => {
     }
 
     const handleDeleteBook = async (id) => {
-
+        const res = await deleteBookApi(id)
+        if (res.data) {
+            notification.success({
+                message: "Delete Book",
+                description: "Delete book successfully"
+            })
+            await loadBook()
+        } else {
+            notification.error({
+                message: "Delete Book fail",
+                description: JSON.stringify(res.message)
+            })
+        }
     }
 
     const onChange = (pagination, filters, sorter, extra) => {
@@ -190,7 +203,15 @@ const BookTable = () => {
                 loadBook={loadBook}
 
             />
-            <BookUpdateControl
+            {/* <BookUpdateControl
+                isModalUpdateOpen={isModalUpdateOpen}
+                setIsModalUpdateOpen={setIsModalUpdateOpen}
+                dataUpdate={dataUpdate}
+                setDataUpdate={setDataUpdate}
+                loadBook={loadBook}
+            /> */}
+
+            <BookUpdateUncontrol
                 isModalUpdateOpen={isModalUpdateOpen}
                 setIsModalUpdateOpen={setIsModalUpdateOpen}
                 dataUpdate={dataUpdate}
