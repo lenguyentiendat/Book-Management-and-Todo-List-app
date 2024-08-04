@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { createBookApi } from '../../service/api.service';
 import { handleUploadFile } from '../../service/api.service';
 
-const BookForm = (props) => {
+const BookFormControl = (props) => {
     const { isCreateOpen, setIsCreateOpen, loadBook } = props
 
     const [mainText, setMainText] = useState("")
@@ -83,7 +83,7 @@ const BookForm = (props) => {
             onOk={() => handleSubmitBtn()}
             onCancel={() => resetAndCloseModal()}
             maskClosable={false}
-            okText={""}
+            okText={"CREATE"}
         >
             <div style={{ display: "flex", gap: "15px", flexDirection: "column" }}>
                 <div>
@@ -105,14 +105,16 @@ const BookForm = (props) => {
                     <span>Price</span>
                     <InputNumber
                         style={{ width: "100%" }}
-                        addonAfter="VND"
+                        addonAfter={"VND"}
                         value={price}
                         onChange={(event) => setPrice(event)}
                     />
                 </div>
                 <div>
                     <span>Quantity</span>
+                    <br />
                     <InputNumber
+                        style={{ width: "100%" }}
                         value={quantity}
                         onChange={(event) => setQuantity(event)}
                     />
@@ -123,7 +125,7 @@ const BookForm = (props) => {
                         style={{ width: "100%" }}
                         defaultValue="Arts"
                         value={category}
-                        onChange={(value) => setCategory(value)}
+                        onChange={(event) => setCategory(event)}
                         options={[
                             { value: 'Arts', label: 'Arts' },
                             { value: 'Business', label: 'Business' },
@@ -178,4 +180,4 @@ const BookForm = (props) => {
     )
 }
 
-export default BookForm
+export default BookFormControl

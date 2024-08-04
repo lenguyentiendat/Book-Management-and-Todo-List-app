@@ -3,7 +3,8 @@ import { fetchAllBookApi } from "../../service/api.service"
 import { Table, Popconfirm, notification, Button } from 'antd';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import BookDetail from "./book.detail";
-import BookForm from "./book.form";
+import BookFormControl from "./book.form.control";
+import BookFormUncontrol from "./book.form.uncontrol";
 
 const BookTable = () => {
 
@@ -177,10 +178,16 @@ const BookTable = () => {
                 setIsDataDetailsOpen={setIsDataDetailsOpen}
                 loadBook={loadBook}
             />
-            <BookForm
+            {/* <BookFormControl
                 isCreateOpen={isCreateOpen}
                 setIsCreateOpen={setIsCreateOpen}
                 loadBook={loadBook}
+            /> */}
+            <BookFormUncontrol
+                isCreateOpen={isCreateOpen}
+                setIsCreateOpen={setIsCreateOpen}
+                loadBook={loadBook}
+
             />
 
 
