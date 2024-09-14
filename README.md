@@ -1,4 +1,4 @@
-# React VITE DatLNT: 
+# Book Management and Todo List app: 
 This project is a website including three main pages: the homepage used to set Todo list for the user, the user page presents the list of website users including their information like ID, username, phone number. Moreover, administrators can create, update and delete a user on this page. The login and register page where users can create new account and login then.
 
 The backend was provided by Eric (HoidanIT).
